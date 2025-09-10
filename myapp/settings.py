@@ -3,7 +3,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROJECT_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -26,7 +26,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
     'feed',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
 ]
 
 MIDDLEWARE = [
@@ -37,17 +44,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'myapp.urls'
 
 #create template directory
-TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
+
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [os.path.join(PROJECT_DIR,'myapp/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,7 +118,33 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#add new django all auth settings
+SITE_ID=1                                   #for the one site we have
+LOGIN_URL="/login/"                         #login url
+LOGIN_REDIRECT_URL="/"                      #redirect to homepage after login
+ACCOUNT_AUTHENTICATION_METHOD="email"     #authenticate using an email address
+ACCOUNT_CONFIRM_EMAIL_ON_GET= True          #allow user to authenticate from email link
+ACCOUNT_EMAIL_REQUIRED=True                 #requires user to have an email
+ACCOUNT_EMAIL_VERIFICATION="optional"       #does the site require the user to verify email? can be set to mandatory
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION=True    #login when email has been confirmed
+ACCOUNT_LOGOUT_ON_GET=True                  #logout without the need to fill out a form
+ACCOUNT_LOGIN_ON_PASSWORD_RESET=True        
+ACCOUNT_LOGOUT_REDIRECT="/"                 #redirect user to homepage when they log out
+ACCOUNT_PRESERVE_USERNAME_CASING=False      #Usernames are not case sensitive.THATO is the same as thato
+ACCOUNT_SESSION_REMEMBER=True               #remembers user forever
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE=True    #to prevent user ffrom locking themselves out if they mistype their password
+ACCOUNT_USERNAME_MIN_LENGTH=2               #minimun username length accepted
+
+#add authenticationbackend
+
+AUTHENTICATION_BACKENDS=[ 
+    
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
