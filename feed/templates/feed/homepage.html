@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+
+{% block head%}
+
+{% endblock %}
+
+{% block body %}
+{% for post in posts%}
+
+{{post}} was created on {{post.date}}<hr>
+
+{% endfor%}
+                                      
+
+{% endblock %}
