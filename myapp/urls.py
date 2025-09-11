@@ -8,6 +8,6 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(feed_urls,namespace="feed")),
-    path('',include("allauth.urls"))
+    path('',include("allauth.urls")),
 ]
  
