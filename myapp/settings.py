@@ -32,9 +32,18 @@ INSTALLED_APPS = [
     'feed',
     'allauth.account',
     'allauth.socialaccount',
-
-
+    'tailwind',
+    'theme',
 ]
+if DEBUG:
+    INSTALLED_APPS+= ["django_browser_reload"]
+
+
+
+TAILWIND_APP_NAME='theme'
+
+
+NPM_BIN_PATH="C:\\Program Files\\nodejs\\npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,6 +56,12 @@ MIDDLEWARE = [
 
     'allauth.account.middleware.AccountMiddleware'
 ]
+
+if DEBUG:
+    
+    MIDDLEWARE+= [
+        "django_browser_reload.middleware.BrowserReloadMiddleware"
+    ]
 
 ROOT_URLCONF = 'myapp.urls'
 
