@@ -1,30 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
-    {% block head%} {%endblock%}
-</head>
-<body>
 
-    This is our own base.html
-    {% if request.user.is_authenticated %}
+{% load static tailwind_tags %}
+    <head>
+    
+        <title>Sign in</title>
+        {% block head%}{%endblock%}
+        {% tailwind_css %}
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
-   <h1>You are logged in </h1>
-   <a href="{% url 'account_logout' %}">Sign out</a><br>
+    <body>
 
-    {% else %}
 
-    <h1>You are not logged in </h1>
-    <a href=" {% url 'account_login'%}"> Sign in </a><br>
-    {% endif %}
+<body class="bg-gray-100 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
 
-    {% block body%}
-        {% block content%}{%endblock content%}
-    {%endblock%}
-       
-</body>
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md bg-white dark:bg-gray-800  px-6 py-8 ring shadow-xl ring-gray-900/5">
+      <div class="p-4 text-3xl font-semibold text-blue-600 border-b shadow">
+        <a href="/">
+             SOCIAL APP
+        </a>   
+      </div>
+      <nav class="p-4 space-y-2">
+        <a href="/" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 rounded">Home</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'account_logout'%}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 rounded">Logout</a>
+        
+        {% else%}
+        <a href="{% url 'account_login'%}"class="block px-4 py-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
+
+        {% endif%}
+      </nav>
+    </aside>
+        <div class="p-16 m-16 ">
+            {% block body%}
+                {%block content%}{%endblock content%}
+            {%endblock%} 
+        </div>
+    
+    </body>
 </html>
-
