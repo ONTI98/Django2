@@ -8,9 +8,11 @@
 
 {% block body%} 
 
-    {% block content %}
-        {% element h1 %}
-            {% trans "Sign In" %}
+{% block content %}
+{% element h1 %}
+<h1 class="text-xl pb-5 text-blue-600">
+Sign in 
+            </h1>
         {% endelement %}
         {% if not SOCIALACCOUNT_ONLY %}
             {% setvar link %}
@@ -20,7 +22,7 @@
                 </a>
             {% endsetvar %}
             {% element p %}
-                {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
+                {% blocktranslate %}If you have not created an account yet, then please {{ link  }}<span class="text- text-blue-600">sign up</span>{{ end_link }} first.{% endblocktranslate %}
             {% endelement %}
             {% url 'account_login' as login_url %}
             {% element form form=form method="post" action=login_url tags="entrance,login" %}
