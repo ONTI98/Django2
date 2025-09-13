@@ -8,8 +8,8 @@ from django.views.generic import *
 
 class HomePage(ListView):
     model=Post
-    template_name="homepage.html"
+    template_name="feed/homepage.html"
     context_object_name="posts"
     http_method_names=["get"]
-    queryset=Post.objects.all().order_by("-id") #arranges posts by descending order
+    queryset=Post.objects.all().order_by("-id")[0:30] #arranges posts by descending order
 
