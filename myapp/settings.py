@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'tailwind',
     'theme',
+
+    'profiles',
 ]
 if DEBUG:
     INSTALLED_APPS+= ["django_browser_reload"]
