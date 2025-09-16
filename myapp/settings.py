@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'theme',
 
     'profiles',
+    'sorl.thumbnail'
 ]
 if DEBUG:
     INSTALLED_APPS+= ["django_browser_reload"]
