@@ -3,39 +3,6 @@
 {% load sorl_thumbnail%}
 {% block body%}
 
-<div class="p-5">
-  <div class="bg-white rounded-lg shadow-lg overflow-hidden p-5">
-    <!-- component-->
-    <div class="p-5">
-      <a href="">
-        <h2 class="text-xl font-bold text-gray-800 mt-2">{{post.text}}</h2>
-      </a>
-      <p class="text-gray-600 mt-2 text-sm">
-        HTML tag to include a column in the Post class(model)
-      </p>
-      <div class="pt-2">
-      </div>
-      <div class="mt-4 flex items-center justify-between">
-        <div class="flex items-center">
-          <!--adding user image-->
-          {% thumbnail post.author.profile.image "200x200" crop="center" as im%}
-          <img
-            src="{{im.url}}"
-            width="{{im.width}}"
-            height="{{im.height}}"
-            class="rounded-full w-10 h-10"
-          />
-          {% endthumbnail %}
-          <span class="ml-2 text-sm text-gray-700">
-            <a href=""> {{post.author.username}} </a>
-          </span>
-        </div>
-        <span class="text-sm text-gray-500"
-          >{{post.date| date:"j F , Y g:i a"}}</span
-        >
-      </div>
-    </div>
-  </div>
-</div>
+{% include "includes/post.html" with post=post read_more_link=False %}
 
 {%endblock %}
