@@ -1,0 +1,41 @@
+{% load sorl_thumbnail%}
+    <div class="p-5">
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden p-5">
+        <!-- component-->
+        <div class="p-5">
+        <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
+        
+        <a href="">
+            <h2 class="text-xl font-bold text-gray-800 mt-2">{{post.text}}</h2>
+        </a>
+        <p class="text-gray-600 mt-2 text-sm">
+          HTML tag to include a column in the Post class(model)
+        </p>
+        <!--If statement for read_more_link-->
+        {% if read_more_link == True%}
+            <div class="pt-2">
+                <a href="{%url 'feed:post_details' post.pk %}" class="text-sm text-blue-600 font-medium ">
+                    Read more
+                </a>
+            </div>
+        {% else %}
+            
+        {%endif%}
+
+        <div class="mt-4 flex items-center justify-between">
+            <div class="flex items-center">
+            <!--adding user image-->    
+            {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
+                <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
+            {% endthumbnail %}
+            <span class="ml-2 text-sm text-gray-700">
+                <a href="">
+                   {{post.author.username}}
+                </a>
+            </span>
+            </div>
+            <span class="text-sm text-gray-500">{{post.date| date:"j F , Y g:i a"}}</span>
+        </div>
+        </div>
+    </div>
+    </div>
