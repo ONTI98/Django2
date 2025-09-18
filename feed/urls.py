@@ -5,4 +5,5 @@ from .views import *
 app_name="feed"
 
 urlpatterns=[path('',HomePage.as_view(),name="index"),
+            path('post/<int:pk>',PostDetailView.as_view(),name="post_details") 
               ]
