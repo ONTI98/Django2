@@ -1,8 +1,28 @@
-{% extends 'base.html'%}
+{% extends 'base.html'%} 
+
 {%block head%}
 <title>Create new post</title>
-{% endblock%}
+{% endblock%} 
 
 {%block body %}
-    {{ form.as_p}} 
+<form method="post">
+  <label for="id_text">Text</label>
+  <input
+    class="border border-gray-500 rounded"
+    type="text"
+    name="text"
+    maxlength="240"
+    required
+    id="id_text"
+  />
+  <div class="pt-2">
+    <button
+    type="submit"
+    class="shadow bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+    >
+      Create post
+    </button>
+  </div>
+</form>
+
 {% endblock%}
