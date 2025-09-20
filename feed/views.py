@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Post
 from django.views.generic import *
+from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin #will force user to be authenticated
 # Create your views here.
 
 
@@ -18,3 +20,8 @@ class PostDetailView(DetailView):
     template_name="feed/detail.html"
     model=Post
     context_object_name="post"
+
+class CreateNewPostView(LoginRequiredMixin,CreateView):
+    model=Post
+    template_name="feed/create.html"
+    fields=["text"]
