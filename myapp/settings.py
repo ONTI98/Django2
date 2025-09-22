@@ -9,6 +9,11 @@ PROJECT_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR,"media/")
 
+#static media/files
+STATICFILES_DIRS=[os.path.join(PROJECT_DIR,"frontend/")]
+STATIC_ROOT=os.path.join(BASE_DIR,"static/")
+STATIC_URL="/static/"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -164,6 +169,7 @@ AUTHENTICATION_BACKENDS=[
     "allauth.account.auth_backends.AuthenticationBackend"
 
 ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
