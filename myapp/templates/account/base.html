@@ -4,9 +4,9 @@
 <html>
     <head>
         {%block head%} {%endblock%}
-
     </head>
-    <body>
+    <body >
+
         {% block body %}
             {% if messages %}
                 <div>
@@ -19,5 +19,6 @@
             {% block content %}
             {% endblock content %}
         {% endblock body %}
+        
     </body>
 </html>
