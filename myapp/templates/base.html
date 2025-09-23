@@ -1,13 +1,13 @@
 {% load static %}
-
 {% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
     <head>
         {% block head%}<title>Sign in</title>{%endblock%}
         {% tailwind_css %}
         <script src="https://cdn.tailwindcss.com"></script>
         <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -41,7 +41,7 @@
        </div>
 {% if request.user.is_authenticated%}
   <!--modal component-->     
-  <div class="js-modal hidden" >
+  <div class="js-modal" >
     <!-- Modal Background -->
     <div
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -61,14 +61,22 @@
         <p class="mb-4 text-gray-600">This is a simple modal built with Tailwind and Alpine.js.</p>
         <div class="text-right">
           <button  type="button" class="px-4 py-2 bg-gray-300 rounded hover:bg-green-400 js-submit">Create post</button>
-          <span><button  class="px-4 py-2 bg-gray-300 rounded hover:bg-green-400">Close</button></span>
+          <span><button  class="px-4 py-2 bg-gray-300 rounded hover:bg-green-400 js-close">Close</button></span>
         </div>
       </div>
     </div>
   </div>
   {% endif %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{% static 'js/main.js' %}"></script>
+  <script 
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer">
+  </script>
+
+  
+  <script src="{% static 'js/main.js' %}"></script>
+
     </body>
 
 </html>
