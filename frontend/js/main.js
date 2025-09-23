@@ -1,22 +1,31 @@
+$.ajaxSetup({
+    beforeSend: function beforeSend(xhr, settings) {
+        function getCookie(name) {
+            let cookieValue = null;
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // for Laravel, Django, etc.
-    }
-  });
 
-  $(document).ready(function () {
-    $('#myButton').click(function () {
-      $.ajax({
-        url: 'https://jsonplaceholder.typicode.com/posts', // replace with your endpoint
-        method: 'GET',
-        success: function (response) {
-          console.log('Success:', response);
-        },
-        error: function (xhr) {
-          console.error('Error:', xhr);
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+
+                for (let i = 0; i < cookies.length; i += 1) {
+                    const cookie = jQuery.trim(cookies[i]);
+
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (`${name}=`)) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+
+            return cookieValue;
         }
-      });
-    });
-  });
 
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+        }
+    },
+});
+
+//select the close button
