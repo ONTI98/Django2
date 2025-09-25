@@ -28,4 +28,9 @@ $.ajaxSetup({
     },
 });
 
-//select the close button
+//adding jquery to the modal
+
+$(document).on("click",".js-modal-toggle",function(event){
+    event.preventDefault()
+    $(".js-modal").toggleClass("hidden")
+})
