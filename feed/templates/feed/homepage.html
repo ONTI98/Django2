@@ -3,12 +3,19 @@
 {% load sorl_thumbnail%}
 {% block body %}
 
-{% for post in posts%}
 
+
+<div class="post-container">
+
+    {% for post in posts%}
+
+        {% include "includes/post.html" with post=post read_more_link=True%}
+
+    {% endfor%} 
+
+</div>
 <!--Add a detail view-->
-{% include "includes/post.html" with post=post read_more_link=True%}
 
-{% endfor%} 
 
 {% endblock %}
 
