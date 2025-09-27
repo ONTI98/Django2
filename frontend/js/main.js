@@ -43,12 +43,30 @@ $(document).on("click",".js-modal-toggle",function(event){
         if (text.length === 0){
             console.log("no text")
             return false
+           
         }else{
             $(".js-modal").addClass("hidden")
             $(".js-post-text").val(" ") //remove  previous text after clicking js-submit button
         }
         
+        $.ajax({
+            type:"POST",
+            url:$(".js-post-text").data("post-url"), //go to the base.html textarea and look for the url in data-post-url
+            data:{
+                text:text
+            },
+            success:(dataHtml)=>{
+                $(".js-modal").addClass("hidden")
+                $(".post-container").prepend(dataHtml); //container in the feed/templates/homepage.html
+                console.log("post added")
+
+            }, 
+            error:(error)=>{
+                console.log(error)
+            }
+        })
         
     })
     
 });
+
