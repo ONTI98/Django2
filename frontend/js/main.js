@@ -39,16 +39,18 @@ $(document).on("click",".js-modal-toggle",function(event){
 
         //get text area text
         const text=$(".js-post-text").val()
+       
         //enable hiding of the modal ONLY when there is some text in the textarea
         if (text.length === 0){
-            console.log("no text")
+            $("js-submit").prop("disabled",true) //disable button if text length is zero
+            
             return false
            
         }else{
             $(".js-modal").addClass("hidden")
             $(".js-post-text").val(" ") //remove  previous text after clicking js-submit button
         }
-        
+        //ajax request
         $.ajax({
             type:"POST",
             url:$(".js-post-text").data("post-url"), //go to the base.html textarea and look for the url in data-post-url
@@ -63,6 +65,7 @@ $(document).on("click",".js-modal-toggle",function(event){
             }, 
             error:(error)=>{
                 console.log(error)
+                $("js-submit").text("Error")
             }
         })
         
