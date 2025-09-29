@@ -1,3 +1,4 @@
+//console.log-used for debugging purposes.remove when deploying
 $.ajaxSetup({
     beforeSend: function beforeSend(xhr, settings) {
         function getCookie(name) {
@@ -33,22 +34,27 @@ $.ajaxSetup({
 $(document).on("click",".js-modal-toggle",function(event){
     event.preventDefault()
     $(".js-modal").toggleClass("hidden")
+});
+    
 
-    .on("click",".js-submit",function(event){
+
+   $(document).on("click",".js-submit",function(event){
         event.preventDefault()
 
         //get text area text
         const text=$(".js-post-text").val()
+        console.log(text.length)
        
         //enable hiding of the modal ONLY when there is some text in the textarea
-        if (text.length === 0){
-            $("js-submit").prop("disabled",true) //disable button if text length is zero
-            
+        if (!text){
+            $(".js-submit").prop("disabled",true) //disable button if text length is zero
+            console.log("button disabled")
+            $(".js-post-text").val()             //disable the button and empty the text field completely
             return false
            
         }else{
             $(".js-modal").addClass("hidden")
-            $(".js-post-text").val(" ") //remove  previous text after clicking js-submit button
+            $(".js-post-text").val("") //remove  previous text after clicking js-submit button
         }
         //ajax request
         $.ajax({
@@ -71,5 +77,3 @@ $(document).on("click",".js-modal-toggle",function(event){
         
     })
     
-});
-
