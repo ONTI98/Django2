@@ -49,12 +49,14 @@ $(document).on("click",".js-modal-toggle",function(event){
         if (!text){
             $(".js-submit").prop("disabled",true) //disable button if text length is zero
             console.log("button disabled")
-            $(".js-post-text").val()             //disable the button and empty the text field completely
+            $(".js-post-text").val("")             //disable the button and empty the text field completely
+            $(".js-submit").prop("disabled",false) //enabled the button again
             return false
            
         }else{
+            
             $(".js-modal").addClass("hidden")
-            $(".js-post-text").val("") //remove  previous text after clicking js-submit button
+            $(".js-post-text").val("") //remove  previous text after clicking js-submit button and create an empty string but still a string.
         }
         //ajax request
         $.ajax({
