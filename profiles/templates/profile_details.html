@@ -1,0 +1,58 @@
+{% extends 'base.html'%} {% block head%}
+<title>{{user.username}}</title>
+{%endblock%} {% load sorl_thumbnail %} 
+
+{%block body%}
+<!--Profile card component-->>
+
+<div
+  class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+>
+  <div class="flex flex-col items-center p-6">
+    {%thumbnail user.profile.image "500x500" crop="center" as im%}
+    <img
+      src="{{im.url}}"
+      width="{{im.width}}"
+      height="{{im.height}}"
+      class="rounded-full w-20 h-20"
+    />
+    {%endthumbnail%}
+    <h2 class="mt-4 text-xl font-semibold text-gray-800">{{user.username}}</h2>
+    <p class="text-gray-500 text-sm">Fullstack Developer</p>
+    <p class="text-center text-gray-600 mt-3 text-sm">
+      Developing web applications for South African communities
+    </p>
+    <button
+      id="followBtn"
+      class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+    >
+      Follow
+    </button>
+
+    <!-- Tabs -->
+    <div class="mt-6 w-full">
+      <div class="flex justify-center border-b border-gray-200">
+        <button
+          class="tab-button px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 active-tab"
+          data-tab="posts"
+        >
+          Posts<br />
+          <div>154</div>
+        </button>
+        <button
+          class="tab-button px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600"
+          data-tab="followers"
+        >
+          Followers <br />
+          <div>55</div>
+        </button>
+
+        <div></div>
+
+        <!-- Tab content -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
