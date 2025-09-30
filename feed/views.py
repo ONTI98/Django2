@@ -13,7 +13,7 @@ class HomePage(ListView):
     template_name="feed/homepage.html"
     context_object_name="posts"
     http_method_names=["get"]
-    queryset=Post.objects.all().order_by("-id")[0:30] #arranges posts by descending order
+    queryset=Post.objects.all().order_by("-id")[0:50] #arranges posts by descending order
 
 class PostDetailView(DetailView):
     http_method_names=["get"]
