@@ -29,7 +29,7 @@
                 <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
             {% endthumbnail %}
             <span class="ml-2 text-sm text-gray-700">
-                <a href="">
+                <a href="{% url 'profiles:profile_details' post.author.username %}">
                    {{post.author.username}}
                 </a>
             </span>
