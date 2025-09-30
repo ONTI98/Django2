@@ -50,7 +50,7 @@ $(document).on("click",".js-modal-toggle",function(event){
             $(".js-submit").prop("disabled",true) //disable button if text length is zero
             console.log("button disabled")
             $(".js-post-text").val("")             //disable the button and empty the text field completely
-            $(".js-submit").prop("disabled",false) //enabled the button again
+            $(".js-submit").prop("disabled",false) //enable the button again
             return false
            
         }else{
