@@ -12,6 +12,7 @@ class Profile(models.Model):
                               related_name="profile"
                             )
     image=ImageField(upload_to="profiles")
+    followers=models.ManyToManyField(User,related_name="followers",blank=True)
   
     def __str__(self):
          return self.user.username
