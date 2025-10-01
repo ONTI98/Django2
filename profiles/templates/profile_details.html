@@ -3,7 +3,7 @@
 {%endblock%} {% load sorl_thumbnail %} 
 
 {%block body%}
-<!--Profile card component-->>
+<!-- Tailwind CSS Profile card component from    ` -->
 
 <div
   class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
@@ -37,7 +37,7 @@
           data-tab="posts"
         >
           Posts<br />
-          <div>154</div>
+          <div>{{total_posts}} </div><!--add number of posts-->
         </button>
         <button
           class="tab-button px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600"
