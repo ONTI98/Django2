@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from feed.models import Post
 
+
+
 # Create your views here.
 
 class ProfileDetailView(DetailView):
@@ -20,4 +22,5 @@ class ProfileDetailView(DetailView):
         user=self.get_object()
         context=super().get_context_data(**kwargs)
         context['total_posts']=Post.objects.filter(author=user).count()
+        context['total_followers']=user.profile.followers.count()#add followers
         return context
