@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'profiles',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'followers',
+    
 ]
 if DEBUG:
     INSTALLED_APPS+= ["django_browser_reload"]
