@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from feed.models import Post
+from followers.models import Follower
 
 
 
@@ -19,8 +20,10 @@ class ProfileDetailView(DetailView):
 
     #get total number of posts
     def get_context_data(self,**kwargs):
-        user=self.get_object()
+        user=self.get_object() #set the user property
         context=super().get_context_data(**kwargs)
         context['total_posts']=Post.objects.filter(author=user).count()
-        context['total_followers']=user.profile.followers.count()#add followers
+        context['total_followers']=Follower.objects.filter(following=user).count()
+        context['total_following']=Follower.objects.filter(followed_by=user).count()
+
         return context
