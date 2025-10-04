@@ -25,11 +25,12 @@
     {% if request.user.is_authenticated%}
         {% if request.user != user %} <!--if requested user is not currrent user, user can be followed(cannot follow oneself)-->
             <button
-            data-username="{{user.username}}"type="button"class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition js-follow-button"
-            >
-            <div class="js-follow-text">
+            data-action="follow"
+            data-url="{% url 'profiles:follow' user.username%}"
+            data-username="{{user.username}}"
+            type="button"
+            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition js-follow-button">
               Follow
-            </div>
             </button>
           {%endif%}
     {%endif%}
