@@ -38,7 +38,7 @@ $(document).on("click",".js-modal-toggle",function(event){
     
 
 
-   $(document).on("click",".js-submit",function(event){
+$(document).on("click",".js-submit",function(event){
         event.preventDefault()
 
         //get text area text
@@ -53,11 +53,11 @@ $(document).on("click",".js-modal-toggle",function(event){
             $(".js-submit").prop("disabled",false) //enable the button again
             return false
            
-        }else{
+        }
             
             $(".js-modal").addClass("hidden")
             $(".js-post-text").val("") //remove  previous text after clicking js-submit button and create an empty string but still a string.
-        }
+        
         //ajax request
         $.ajax({
             type:"POST",
@@ -77,5 +77,30 @@ $(document).on("click",".js-modal-toggle",function(event){
             }
         })
         
-    })
+    });
+  //follow button event listener
+
+
+  $Followbutton=$(".js-follow-button") //vraiable for the follow button
+
+  $($Followbutton).on("click",function(event){
+    event.preventDefault()
+
+    console.log("follow this user")
+    $.ajax({
+            type:"POST",
+            url:$(this).data("url"),
+            data:{
+                action:$(this).attr("data-action"), //we use this because we do not want caching
+                username:$(this).data("username")  //look for username./Here we do not need to worry about caching
+            },
+            success:(data)=>{
+
+            }, 
+            error:(error)=>{
+               
+            }
+        })
     
+
+  })
