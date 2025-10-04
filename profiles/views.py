@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from feed.models import Post
 from followers.models import Follower
-
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
 # Create your views here.
 
@@ -27,3 +27,6 @@ class ProfileDetailView(DetailView):
         context['total_following']=Follower.objects.filter(followed_by=user).count()
 
         return context
+
+class FollowView(LoginRequiredMixin,View):
+        pass
