@@ -18,15 +18,20 @@ class ProfileDetailView(DetailView):
     slug_field="username"
     slug_url_kwarg="username"
 
+    def dispatch(self, request, *args, **kwargs):
+         self.request=request
+         return super().dispatch(request, *args, **kwargs)
 
     #get total number of posts
     def get_context_data(self,**kwargs):
+    
         user=self.get_object() #set the user property
         context=super().get_context_data(**kwargs)
         context['total_posts']=Post.objects.filter(author=user).count()
         context['total_followers']=Follower.objects.filter(following=user).count()
         context['total_following']=Follower.objects.filter(followed_by=user).count()
-
+        if self.request.user.is_authenticated:
+             context["you_follow"] =Follower.objects.filter(following=user,followed_by=self.request.user).exists()
         return context
 
 class FollowView(LoginRequiredMixin,View):
@@ -49,7 +54,7 @@ class FollowView(LoginRequiredMixin,View):
 
              else:
                     try:
-                       folower=Follower.objects.get(
+                       follower=Follower.objects.get(
                             followed_by=request.user,
                             following=other_user,
                        )
@@ -61,7 +66,7 @@ class FollowView(LoginRequiredMixin,View):
              return JsonResponse(
               {
                    "success":True,
-                   "wording":"unfollow" if data["action"] =="follow" else  data["action"]=="Follow"
+                   "wording":"Unfollow" if data["action"] == "follow" else "Follow"
               }
              )
           
