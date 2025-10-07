@@ -25,6 +25,10 @@ class HomePage(TemplateView):
             if self.request.user.is_authenticated:
                 following=list(Follower.objects.filter(followed_by=self.request.user).values_list("following"))
                 context["posts"]=Post.objects.filter(author__in=following).order_by("-id")[0:20]
+                if not following:
+                      context["posts"]=Post.objects.all().order_by("-id")[0:35]
+                else:
+                    context["posts"]=Post.objects.filter(author__in=following).order_by("-id")[0:20]    
             else:
                 context["posts"]=Post.objects.all().order_by("-id")[0:35] #if user is not loggen in, show random posts from all users
             return context
