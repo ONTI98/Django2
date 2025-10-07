@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic import TemplateView
 from .models import Post
 from django.views.generic import *
 from django.views.generic.edit import CreateView
@@ -8,12 +9,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin #will force user to be
 from django.shortcuts import render
 
 
-class HomePage(ListView):
+class HomePage(TemplateView):
     model=Post
     template_name="feed/homepage.html"
     context_object_name="posts"
     http_method_names=["get"]
-    queryset=Post.objects.all().order_by("-id")[0:50] #arranges posts by descending order
+    queryset=Post.objects.all().order_by("-id")[0:150] #arranges posts by descending order
 
 class PostDetailView(DetailView):
     http_method_names=["get"]
