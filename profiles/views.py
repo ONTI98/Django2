@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from feed.models import Post
@@ -7,7 +8,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 from django.http import JsonResponse
 from django.http import HttpResponseBadRequest
+from django.views.generic import UpdateView
+from django import forms
+from .forms import UserUpdateForm
+from django.urls import reverse_lazy
+from .models import Profile
 # Create your views here.
+
+
 
 class ProfileDetailView(DetailView):
 
@@ -51,6 +59,7 @@ class FollowView(LoginRequiredMixin,View):
                   follower,created=Follower.objects.get_or_create(
                   followed_by=request.user,
                   following=other_user)
+             
 
              else:
                     try:
@@ -69,4 +78,20 @@ class FollowView(LoginRequiredMixin,View):
                    "wording":"Unfollow" if data["action"] == "follow" else "Follow"
               }
              )
+          
+
+#update user profile info
+
+
+class UpdateProfileView(LoginRequiredMixin,UpdateView):
+     
+          model=User
+          form_class=UserUpdateForm
+          template_name="update_profile.html"
+          success_url=reverse_lazy("profile_details")
+          
+    
+          def get_object(self,queryset=None):
+               return (self.request.user)
+               
           
