@@ -21,3 +21,13 @@ class UpdateUserDetails(forms.ModelForm):
           model=User
           fields=['first_name','last-name','email']
 
+     
+#update profile photo
+class UpdateProfilePhoto(forms.ModelForm):
+     profile_photo=forms.ImageField(widget=forms.FileInput(attrs={'class';'form-control'}))
+     biography=forms.CharField(required=True,widget=forms.Textarea(attrs={'class':'form-control'}))
+
+
+     class Meta:
+          model=Profile
+          field=['avatar']
