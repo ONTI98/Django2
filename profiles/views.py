@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from feed.models import Post
@@ -8,11 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 from django.http import JsonResponse
 from django.http import HttpResponseBadRequest
-from django.views.generic import UpdateView
-from django import forms
-from .forms import UserUpdateForm
-from django.urls import reverse_lazy
-from .models import Profile
+
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .forms import UpdateProfilePhoto
+from .forms import UpdateUserDetails
+
 # Create your views here.
 
 
@@ -80,18 +80,5 @@ class FollowView(LoginRequiredMixin,View):
              )
           
 
-#update user profile info
 
-
-class UpdateProfileView(LoginRequiredMixin,UpdateView):
-     
-          model=User
-          form_class=UserUpdateForm
-          template_name="update_profile.html"
-          success_url=reverse_lazy("profile_details")
-          
-    
-          def get_object(self,queryset=None):
-               return (self.request.user)
-               
-          
+#update user details
