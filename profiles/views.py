@@ -88,12 +88,12 @@ class FollowView(LoginRequiredMixin,View):
 def update_profile_information(request):
      if request.method == "POST":
           user_form=UpdateUserDetails(request.POST,instance=request.user)
-          profile_form=UpdateProfilePhoto(request.POST,request.FILES,instance=request.user)
+          profile_form=UpdateProfilePhoto(request.POST,request.FILES,instance=request.user.profile)
 
           if profile_form.is_valid() and user_form.is_valid():
                user_form.save()
                profile_form.save()
-               messages.success(request,"Information updated successfully!")
+               messages.success(request,"Profile updated successfully!")
 
                return redirect("profiles/profile_details.html") #redireect to user profile
           
