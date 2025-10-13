@@ -12,6 +12,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateProfilePhoto
 from .forms import UpdateUserDetails
+from django.contrib import messages
 
 # Create your views here.
 
@@ -82,3 +83,26 @@ class FollowView(LoginRequiredMixin,View):
 
 
 #update user details
+@login_required
+
+def update_profile_information(request):
+     if request.method == "POST":
+          user_form=UpdateUserDetails(request.POST,instance=request.user)
+          profile_form=UpdateProfilePhoto(request.POST,request.FILES,instance=request.user)
+
+          if profile_form.is_valid() and user_form.is_valid():
+               user_form.save()
+               profile_form.save()
+               messages.success(request,"Information updated successfully!")
+
+               return redirect("profiles/profile_details.html") #redireect to user profile
+          
+
+     else:
+          user_form=UpdateProfilePhoto(instance=request.user)
+          profile_form=UpdateProfilePhoto(instance=request.user)
+
+
+     return render(request,'profiles/profile_details.html',{'user_form':user_form, 'profile_form':profile_form})
+
+
