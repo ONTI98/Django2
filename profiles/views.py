@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
-from django.views.generic import DetailView
+from django.views.generic import DetailView,TemplateView
 from feed.models import Post
 from followers.models import Follower
+from .models import Profile
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 from django.http import JsonResponse
@@ -13,10 +14,34 @@ from django.contrib.auth.decorators import login_required
 from .forms import UpdateProfilePhoto
 from .forms import UpdateUserDetails
 from django.contrib import messages
-
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
+class ProfileView(DetailView):
+
+     model=User
+     template_name="profile.html"
+     context_object_name="user"
+     slug_url_kwarg="username"
+     slug_field="username"
+
+
+     
+     def get_object(self, queryset=None):
+          # If "username" is in the URL, return that user; else, return current user
+          username = self.kwargs.get(self.slug_url_kwarg)
+          if username:
+               return get_object_or_404(User, username=username)
+          return self.request.user
+   
+     def get_context_data(self, **kwargs):
+          context=super().get_context_data(**kwargs)
+          context["profile_photo"]=self.get_object().profile.image.url if self.get_object().profile.image else None
+          return context
+         
+    
+ 
 
 class ProfileDetailView(DetailView):
 
@@ -26,6 +51,7 @@ class ProfileDetailView(DetailView):
     context_object_name="user"
     slug_field="username"
     slug_url_kwarg="username"
+
 
     def dispatch(self, request, *args, **kwargs):
          self.request=request
