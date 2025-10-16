@@ -8,5 +8,7 @@ urlpatterns=[
     path("profile/<str:username>",ProfileDetailView.as_view(),name="profile_details"),
     path("profile/<str>:username/follow/",FollowView.as_view(),name="follow" ),
     path("profile/",ProfileView.as_view(),name="profile"),
+    path("change_password/",ChangePasswordView.as_view(),name="password"),
+    path("update_user/",update_profile_information,name="update"),
     
     ]
