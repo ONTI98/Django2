@@ -4,43 +4,51 @@
 {%block head%}<title>Profile</title>{%endblock%}
 {%block body%}
 
-<body class="bg-gray-100 min-h-screen py-10">
-  <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
-    <div class="flex items-center space-x-6">
-      
-      <img src="{{ profile_photo}}" width="{{ im.width }}" height="{{ im.height }}"
-        alt="Avatar"
-        class="w-24 h-24 rounded-full object-cover border"
-      />
-    
-
-      <div>
-        <h2 class="text-2xl font-semibold"></h2>
-        <p class="text-gray-600"></p>
-      </div>
+<body class=" bg-gray-100 min-h-screen py-10">
+  
+     <div class="mb-5">
+      {% thumbnail user.profile.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" 
+        width="{{ im.width }}" 
+        height="{{ im.height }}"
+        class="rounded-full w-20 h-20" />  
+      {% endthumbnail %}
     </div>
-
-    <div class="mt-6">
-      <h3 class="font-semibold text-gray-800 mb-1">Username</h3>
-      <p class="text-gray-700">{{user.username}}</p>
+ 
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Username:</label>
+                            {{ user.username }} <br>
+                        <label class="small mb-1">Email:</label>
+                            {{ user.email }}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <a href="{% url 'profiles:update_user_details'%}">
+              <button type="button" class="btn btn-dark border rounded p-2 btn-lg">Update Profile</button>
+            </a>
+            <span>  <button type="button" class="btn btn-dark border rounded p-2 btn-lg">
+                        <a href="{% url 'profiles:password' %}">Change Password</a>
+                      </button></span>
+            
+        </form>
     </div>
-     <div class="mt-6">
-      <h3 class="font-semibold text-gray-800 mb-1">First name</h3>
-      <p class="text-gray-700">{{user.first_name}}</p>
-    </div>
-     <div class="mt-6">
-      <h3 class="font-semibold text-gray-800 mb-1">Last name</h3>
-      <p class="text-gray-700">{{user.last_name}}</p>
-    </div>
-    <div class="mt-6 text-right">
-      <a
-        href=""
-        class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Edit Profile
-      </a>
-    </div>
-  </div>
-</body>
 
 {%endblock%}
