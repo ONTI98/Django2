@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.views.generic import DetailView,TemplateView
+from django.contrib.auth.views import PasswordChangeView
+
 from feed.models import Post
 from followers.models import Follower
 from .models import Profile
@@ -8,6 +10,7 @@ from django.views.generic import View
 from django.http import JsonResponse
 from django.http import HttpResponseBadRequest
 
+from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -18,7 +21,7 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
-class ProfileView(DetailView):
+class ProfileView(LoginRequiredMixin,DetailView):
 
      model=User
      template_name="profile.html"
@@ -37,7 +40,11 @@ class ProfileView(DetailView):
    
      def get_context_data(self, **kwargs):
           context=super().get_context_data(**kwargs)
-          context["profile_photo"]=self.get_object().profile.image.url if self.get_object().profile.image else None
+          profile_photo=self.get_object().profile.image.url
+          if profile_photo:
+               context["profile_photo"]=profile_photo
+          else:
+               pass #return a default image/
           return context
          
     
@@ -110,25 +117,27 @@ class FollowView(LoginRequiredMixin,View):
 
 #update user details
 @login_required
-
 def update_profile_information(request):
-     if request.method == "POST":
+     if request.method == "POST": #if the user is uploading information
           user_form=UpdateUserDetails(request.POST,instance=request.user)
           profile_form=UpdateProfilePhoto(request.POST,request.FILES,instance=request.user.profile)
 
           if profile_form.is_valid() and user_form.is_valid():
                user_form.save()
                profile_form.save()
-               messages.success(request,"Profile updated successfully!")
+               messages.success(request,("Profile updated successfully!"))
 
-               return redirect("profiles/profile_details.html") #redireect to user profile
-          
-
+               return redirect("/")
+#redireect to user profile
+              
      else:
-          user_form=UpdateProfilePhoto(instance=request.user)
+          user_form=UpdateUserDetails(instance=request.user)
           profile_form=UpdateProfilePhoto(instance=request.user)
 
 
-     return render(request,'profiles/profile_details.html',{'user_form':user_form, 'profile_form':profile_form})
+     return render(request,"profile_update.html",{'user_form':user_form, 'profile_form':profile_form})
 
 
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'change_password.html'
+    success_url = reverse_lazy("password")
