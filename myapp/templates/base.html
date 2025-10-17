@@ -2,6 +2,7 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
+  {# make app responsive#}
     <head>
         {% block head%}<title>Sign in</title>{%endblock%}
         {% tailwind_css %}
@@ -15,9 +16,8 @@
 
     <body>
 
-
+ {#TODO: Edit the front end#}
 <body class=" bg-dark-subtle rounded-lg px-6 py-8 ring shadow-xl  ">
-
   <div class="flex h-screen">
     {#TODO: add a link for the user bio and detail view#}
     <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5">
@@ -33,6 +33,7 @@
         <a href="{% url 'account_logout' %}" class="block p-2 text-gray-700 hover:bg-blue-100 rounded">Logout</a>
          <a href="{% url 'feed:new_post' %}"class="block  p-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
         <a href="{% url 'profiles:profile'%}" class="block p-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
+        {#TODO:create button for viewing other profiles so people can follow#}
          <a href="{% url 'profiles:profile'%}" class="block p-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
         {% else%}
         <a href="{% url 'account_login' %}"class="block p-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
