@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import  User
 from .models import Profile
+from django.views.generic import DetailView
 
 
 
@@ -19,15 +20,15 @@ class UpdateUserDetails(forms.ModelForm):
      
      class Meta:
           model=User
-          fields=['first_name','last-name','email']
-
+          fields=['first_name','last_name','email']
+     
      
 #update profile photo
 class UpdateProfilePhoto(forms.ModelForm):
-     profile_photo=forms.ImageField(widget=forms.FileInput(attrs={'class';'form-control'}))
-     biography=forms.CharField(required=True,widget=forms.Textarea(attrs={'class':'form-control'}))
 
+     image=forms.ImageField(label="Pofile photo",widget=forms.FileInput(attrs={'class':'form-control'}))
 
      class Meta:
           model=Profile
-          field=['avatar']
+          fields=['image']
+
