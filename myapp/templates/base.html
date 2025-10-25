@@ -9,7 +9,6 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
         
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
         	
     </head>
@@ -18,15 +17,15 @@
 
  {#TODO: Edit the front end#}
 <body class=" bg-dark-subtle rounded-lg px-6 py-8 ring shadow-xl  ">
-  <div class="flex h-screen">
+  <div class="flex h-screen" style="height:auto; border:1px solid" id="aside_container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
-    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5">
+    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5 sidebar">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
         </a>   
       </div>
-      <nav class="p-4 space-y-2">
+      <nav class="p-4 space-y-2 ">
         
         <a href="/" class="block  p-2 text-gray-700 hover:bg-blue-100 rounded">Home</a>
         {% if request.user.is_authenticated %}
@@ -40,6 +39,7 @@
         {% endif%}
       </nav>
     </aside>
+    
        <div class=" container m-10 p-16 ">
          {% block body%}
                 {%block content%}{%endblock content%}
@@ -86,7 +86,6 @@
 
 
   <script src="{% static 'js/main.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 
 </html>
