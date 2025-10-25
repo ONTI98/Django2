@@ -4,8 +4,17 @@
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
+<style>
+    .sidebar{
+        visibility:hidden;
+        display: flex;
+        border:1px solid green;
+        
+    }
+</style>
+{% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
     {% setvar link %}
