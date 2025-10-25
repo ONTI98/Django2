@@ -6,13 +6,23 @@
     {% trans "Sign In" %}
 {% endblock head_title %}
 
-{% block body%} 
 
+{% block body%} 
+<style>
+    #aside_container{
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+    .sidebar{
+        visibility: collapse;
+    }
+</style>
+
+<div class=" border rounded-lg p-2 " id="sign_in_form">
 {% block content %}
 {% element h1 %}
-<h1 class="text-xl pb-5 text-blue-600">
-Sign in 
-            </h1>
+<!--form -->
+<h1 class="text-xl pb-5 text-blue-600 border ">Sign in</h1>
         {% endelement %}
         {% if not SOCIALACCOUNT_ONLY %}
             {% setvar link %}
@@ -69,3 +79,8 @@ Sign in
         {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
     {% endif %}
 {% endblock %}
+</div>
+</div>
+
+    
+    
