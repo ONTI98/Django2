@@ -5,18 +5,19 @@
 
 {% block body %}
 <style>
-    #sidebar{
+    #sidebar_original{
         visibility: collapse;
     }
 </style>
+<div class="flex sm:flex-col lg:flex-row  ">
 
-    <aside class="w-auto flex sm:flex-col shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5 sidebar">
+     <aside class="lg:w-64 shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5 " id="sidebar_homepage">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
         </a>   
       </div>
-      <nav class="flex justify-center p-4 space-y-2 ">
+      <nav class=" sm:flex lg:block p-4 space-y-2 ">{#change nav to be #}
         <a href="/" class="flex p-2 justify-center  text-gray-700 hover:bg-blue-100 hidden rounded">Home</a>
                 <a href="/" class="flex p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Home</a>
 
@@ -41,6 +42,9 @@
 
 </div>
 </div>
+
+</div>
+   
 
 <!--Add a detail view-->
 
