@@ -1,12 +1,38 @@
 {%extends 'base.html'%} 
 {% block head%} {% endblock %} 
 {% load sorl_thumbnail%}
+
+
 {% block body %}
+<style>
+    #sidebar{
+        visibility: collapse;
+    }
+</style>
 
+    <aside class="w-auto flex sm:flex-col shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5 sidebar">
+      <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
+        <a href="/">
+             SOCIAL APP
+        </a>   
+      </div>
+      <nav class="flex justify-center p-4 space-y-2 ">
+        <a href="/" class="flex p-2 justify-center  text-gray-700 hover:bg-blue-100 hidden rounded">Home</a>
+                <a href="/" class="flex p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Home</a>
 
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'account_logout' %}" class="flex p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Logout</a>
+         <a href="{% url 'feed:new_post' %}"class="flex justify-center  p-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
+        <a href="{% url 'profiles:profile'%}" class="flex justify-center p-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
+        {#TODO:create button for viewing other profiles so people can follow#}
+         <a href="{% url 'profiles:profile'%}" class="flex justify-center p-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
+        {% else%}
+        <a href="{% url 'account_login' %}"class="flex justify-center p-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
+        {% endif%}
+      </nav>
+    </aside>
 
-<div class="post-container">
-
+    <div class="flex-col post-container ">
     {% for post in posts%}
 
         {% include "includes/post.html" with post=post read_more_link=True%}
@@ -14,6 +40,8 @@
     {% endfor%} 
 
 </div>
+</div>
+
 <!--Add a detail view-->
 
 
