@@ -13,13 +13,12 @@
         	
     </head>
 
-    <body>
-
+   
  {#TODO: Edit the front end#}
-<body class=" bg-dark-subtle rounded-lg px-6 py-8 ring shadow-xl  ">
-  <div class="flex h-screen" style="height:auto; border:1px solid" id="aside_container">{# container that holds side bar#}
+<body class=" bg-dark-subtle  px-6 py-8 ring   ">
+  <div class="flex  h-screen "  style="height:auto;" id="aside_container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
-    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl ring-gray-900/5 sidebar">
+    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar_original">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
@@ -40,7 +39,7 @@
       </nav>
     </aside>
     
-       <div class=" container m-10 p-16 ">
+       <div class="m-auto" id="base-body-container">
          {% block body%}
                 {%block content%}{%endblock content%}
             {%endblock%}   
