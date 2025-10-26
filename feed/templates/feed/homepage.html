@@ -33,7 +33,7 @@
       </nav>
     </aside>
 
-    <div class="flex-col post-container ">
+    <div class="flex-col post-container" style="width:100%">
     {% for post in posts%}
 
         {% include "includes/post.html" with post=post read_more_link=True%}
