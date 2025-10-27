@@ -2,7 +2,13 @@
 {% block head%}<title>{{post.text}}</title>{% endblock head%} 
 {% load sorl_thumbnail%}
 {% block body%}
+  <style>
 
+       #sidebar-original{
+        visibility: collapse;
+    }
+
+  </style>
 {% include "includes/post.html" with post=post read_more_link=False %}
 
 {%endblock %}
