@@ -18,7 +18,7 @@
 <body class=" bg-dark-subtle  px-6 py-8 ring   ">
   <div class="flex  h-screen "  style="height:auto;" id="aside_container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
-    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar_original">
+    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
@@ -46,7 +46,7 @@
        </div>
 {% if request.user.is_authenticated%}
   <!--modal component-->     
-  <div class="js-modal hidden" >
+  <div class="js-modal " >
     <!-- Modal Background -->
     <div
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -58,10 +58,12 @@
       x-transition:leave-end="opacity-0"
     >
       <!-- Modal Box -->
-      <div
-        class="bg-white rounded-lg shadow-lg w-96 p-6"
+      <div 
+        id="modal-box"
+        class="bg-white  rounded-lg shadow-lg w-96 p-6  mb-auto mt-64"
         x-transition
       >
+      here
         <h2 class="text-xl font-semibold mb-4 text-blue-500">New post</h2>
         <!--Created a text area for post text-->
         <div class="pb-4 ">
