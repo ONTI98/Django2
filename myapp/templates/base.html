@@ -15,8 +15,15 @@
 
    
  {#TODO: Edit the front end#}
-<body class=" bg-dark-subtle  px-6 py-8 ring   ">
-  <div class="flex  h-screen "  style="height:auto;" id="aside_container">{# container that holds side bar#}
+<body class=" bg-dark-subtle ring ">
+  
+  <style>
+    .author-text-box{
+        border:1px solid red;
+    }
+</style>
+
+  <div class="flex" id="aside-container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
     <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
@@ -46,7 +53,7 @@
        </div>
 {% if request.user.is_authenticated%}
   <!--modal component-->     
-  <div class="js-modal " >
+  <div class="js-modal hidden " >
     <!-- Modal Background -->
     <div
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
