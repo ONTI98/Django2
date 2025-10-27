@@ -1,12 +1,14 @@
 {% load sorl_thumbnail%}
-    <div class="bg-primary-subtle">
-    <div class="flex  rounded shadow-lg overflow-hidden" >
 
-        
+
+
+    <div class="bg-primary-subtle">
+    <!--post container-->    
+    <div class="mb-5 rounded shadow-lg overflow-hidden" >
         <!-- component-->
-        <div class="p-5 ">
+        <div class="p-5">
             <!--adding user image-->  
-            <div class=" flex">
+            <div class="">
                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
                 <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
             {% endthumbnail %}
@@ -18,10 +20,9 @@
             </div>  
            
         <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
-        
-
-        <h2 class="text-xl font-bold text-gray-800 mt-2">{{post.text}}</h2>
-       
+  
+          <p class="font-bold truncate text-gray-800 mt-2" id="author-text-box">{{post.text}}</p>
+    
         <p class="text-gray-600 mt-2 text-sm">
           HTML tag to include a column in the Post class(model)
         </p>
