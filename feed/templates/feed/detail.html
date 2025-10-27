@@ -7,8 +7,58 @@
        #sidebar-original{
         visibility: collapse;
     }
+    #author-text-box{
+       width: 36rem;
+       overflow-wrap: break-word;
+       
+    }
 
   </style>
-{% include "includes/post.html" with post=post read_more_link=False %}
+  
+
+    <div class="bg-primary-subtle">
+    <!--post container-->    
+    <div class="mb-5 rounded shadow-lg overflow-hidden" >
+        <!-- component-->
+        <div class="p-5">
+            <!--adding user image-->  
+            <div class="">
+                 {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
+                <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
+            {% endthumbnail %}
+            <span class="pt-2 ml-2 text-sm text-gray-700 ">
+                <a href="{% url 'profiles:profile_details' post.author.username %}">
+                   {{post.author.username}}
+                </a>
+            </span>
+            </div>  
+           
+        <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
+  
+        <div class="" id="author-text-box">
+            <p class="font-bold text-gray-800 mt-2" >{{post.text}}</p>
+        </div>
+          
+    
+        <p class="text-gray-600 mt-2 text-sm">
+          HTML tag to include a column in the Post class(model)
+        </p>
+        <!--If statement for read_more_link-->
+        {% if read_more_link == True%}
+            <div class="pt-2">
+                <a href="{%url 'feed:post_details' post.pk %}" class="text-sm text-blue-600 font-medium ">
+                    Read more
+                </a>
+            </div>
+        {% else %}
+            
+        {%endif%}
+
+        <div class="mt-4 ">
+            <div class="text-sm text-gray-500">{{post.date| date:"j F , Y g:i a"}}</div>
+        </div>
+        </div>
+    </div>
+    </div>
 
 {%endblock %}
