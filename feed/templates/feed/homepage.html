@@ -17,8 +17,7 @@
     #sidebar-homepage{
       height: 25%;
     }
-    
-
+  
    
 </style>
 <!-- sidebar for the homapage-->
@@ -45,10 +44,47 @@
       </nav>
     </aside>
 
-    <div class="flex-col post-container"">
-    {% for post in posts%}
+    <div class="post-container">
 
-        {% include "includes/post.html" with post=post read_more_link=True%}
+    {% for post in posts%}
+      <!--post container-->    
+      <div class="mb-5 rounded shadow-lg overflow-hidden" >
+          <!-- component-->
+          <div class="p-5">
+              <!--adding user image-->  
+              <div class="">
+                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
+                  <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
+              {% endthumbnail %}
+              <span class="pt-2 ml-2 text-sm text-gray-700 ">
+                  <a href="{% url 'profiles:profile_details' post.author.username %}">
+                    {{post.author.username}}
+                  </a>
+              </span>
+              </div>  
+            
+          <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
+
+        
+            <p class="font-bold truncate text-gray-800 mt-2" id="author-text-box">{{post.text}}</p>
+        
+            
+          <p class="text-gray-600 mt-2 text-sm">
+            HTML tag to include a column in the Post class(model)
+          </p>
+          <!--If statement for read_more_link-->
+          
+              <div class="pt-2">
+                  <a href="{%url 'feed:post_details' post.pk %}" class="text-sm text-blue-600 font-medium ">
+                      Read more
+                  </a>
+              </div>
+          <div class="mt-4 ">
+              <div class="text-sm text-gray-500">{{post.date| date:"j F , Y g:i a"}}</div>
+          </div>
+          </div>
+      </div>
+        
 
     {% endfor%} 
 
