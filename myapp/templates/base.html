@@ -18,18 +18,22 @@
 
    
  {#TODO: Edit the front end#}
-<body class=" bg-dark-subtle ring ">
+<body class="bg-dark ring ">
 
   <style>
-    #author-text-box{
-        border:1px solid red;
-        width:26rem;
-    }
-    #base-body-container{
-      margin: auto;
-    }
-   
-</style>
+      #author-text-box{
+          border:px solid red;
+          width:26rem;
+      }
+      #base-body-container{
+        margin: auto;
+        border:0px solid purple;
+      
+        
+        ;
+        
+      }   
+  </style>
 
   <div class="flex " id="aside-container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
@@ -57,14 +61,14 @@
 
 
     <!--body container(base)-->
-       <div class="" id="base-body-container">
+       
          {% block body%}
                 {%block content%}{%endblock content%}
             {%endblock%}   
-       </div>
+       
 {% if request.user.is_authenticated%}
   <!--modal component-->     
-  <div class="js-modal " >
+  <div class="js-modal hidden " >
     <!-- Modal Background -->
     <div
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
