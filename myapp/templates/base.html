@@ -16,21 +16,26 @@
         	
     </head>
 
-   
+ 
  {#TODO: Edit the front end#}
-<body class="bg-dark ring ">
-
+<body class="m-2">
   <style>
-      #author-text-box{
-          border:px solid red;
+    
+    body{
+     border:0px solid red;
+       
+   }
+    #author-text-box{
+          border:px solid rgb(0, 242, 255);
           width:26rem;
       }
+
        
   </style>
 
-  <div class="flex " id="aside-container">{# container that holds side bar#}
+ 
     {#TODO: add a link for the user bio and detail view#}
-    <aside class=" lg:w-64 shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
+    <aside class=" shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
@@ -50,11 +55,7 @@
         {% endif%}
       </nav>
     </aside>
-
-
-
-    <!--body container(base)-->
-       
+  
          {% block body%}
                 {%block content%}{%endblock content%}
             {%endblock%}   
