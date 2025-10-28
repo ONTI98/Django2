@@ -1,14 +1,17 @@
+
+
 {% load static %}
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
   {# make app responsive#}
     <head>
+       <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head%}<title>Sign in</title>{%endblock%}
         {% tailwind_css %}
         <script src="https://cdn.tailwindcss.com"></script>
         <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-        
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
         	
     </head>
@@ -16,16 +19,21 @@
    
  {#TODO: Edit the front end#}
 <body class=" bg-dark-subtle ring ">
-  
+
   <style>
-    .author-text-box{
+    #author-text-box{
         border:1px solid red;
+        width:26rem;
     }
+    #base-body-container{
+      margin: auto;
+    }
+   
 </style>
 
-  <div class="flex" id="aside-container">{# container that holds side bar#}
+  <div class="flex " id="aside-container">{# container that holds side bar#}
     {#TODO: add a link for the user bio and detail view#}
-    <aside class="w-64  shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
+    <aside class=" w-24 shadow-md bg-dark  px-6 py-8 ring shadow-xl  ring-gray-900/5 "  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
@@ -45,8 +53,11 @@
         {% endif%}
       </nav>
     </aside>
-    
-       <div class="m-auto" id="base-body-container">
+
+
+
+    <!--body container(base)-->
+       <div class="" id="base-body-container">
          {% block body%}
                 {%block content%}{%endblock content%}
             {%endblock%}   
