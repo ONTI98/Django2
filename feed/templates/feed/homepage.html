@@ -11,10 +11,7 @@
     #sidebar-homepage{
       height: 25%;
     }
-    #body-container{
-      border:1px solid  red;
-   
-    }
+  
     #hidden-home-button{
       visibility: collapse;
     }
@@ -46,13 +43,15 @@
       </nav>
     </aside>
 
-    <div class="post-container">
+   
 
     {% for post in posts%}
-      <!--post component container-->    
-      <div class="mb-5  rounded shadow-lg overflow-hidden" >
+      <!--post component container-->   
+      <div class="post-container border ">  
+
+      <div class="mb-5 border-2 rounded shadow-lg overflow-hidden" >
           <!-- component-->
-          <div class="p-5">
+          <div class="">
               <!--adding user image-->  
               <div class="">
                   {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
@@ -66,11 +65,9 @@
               </div>  
             
           <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
-
-        
+  
             <p class="font-bold truncate text-gray-800 mt-2" id="author-text-box">{{post.text}}</p>
-        
-            
+          
           <p class="text-gray-600 mt-2 text-sm">
             HTML tag to include a column in the Post class(model)
           </p>
@@ -86,14 +83,12 @@
           </div>
           </div>
       </div>
-        
-
     {% endfor%} 
 
-</div>
-</div>
+  </div>
 
-</div>
+
+
    
 
 <!--Add a detail view-->
