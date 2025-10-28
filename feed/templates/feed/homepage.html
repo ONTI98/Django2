@@ -5,41 +5,43 @@
 
 {% block body %}
 <style>
-  body{
-   
-    margin: 0;
-    padding: 0;
-
-  }
     #sidebar-original{
         visibility: collapse;
     }
     #sidebar-homepage{
       height: 25%;
     }
+    #body-container{
+      border:1px solid  red;
+   
+    }
+    #hidden-home-button{
+      visibility: collapse;
+    }
   
    
 </style>
 <!-- sidebar for the homapage-->
-<div class="flex flex-col lg:flex-row" id="body-container">
+<div class="flex flex-col lg:flex-row " id="body-container">
      <aside class="lg:w-64 sm:mb-5 lg:me-5 shadow-md bg-dark  rounded-lg" id="sidebar-homepage">
       <div class="p-4 text-xl font-semibold text-blue-600 border-b shadow">
         <a href="/">
              SOCIAL APP
         </a>   
       </div>
-      <nav class=" sm:flex lg:block sm:justify-center p-4 space-y-2 ">{#change nav to be #}
-        <a href="/" class="flex p-2 justify-center  text-gray-700 hover:bg-blue-100 hidden rounded">Home</a>
-                <a href="/" class="flex p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Home</a>
+      <nav class="lg:block p-4 lg:mx-5 mx-4 space-y-2 ">{#change nav to be #}
+       
+        <a href="/" class="lg:flex  p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Home</a>
 
         {% if request.user.is_authenticated %}
-        <a href="{% url 'account_logout' %}" class="flex p-2 justify-center text-gray-700 hover:bg-blue-100 rounded">Logout</a>
-         <a href="{% url 'feed:new_post' %}"class="flex justify-center  p-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
-        <a href="{% url 'profiles:profile'%}" class="flex justify-center p-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
+
+        <a href="{% url 'account_logout' %}" class="lg:flex justify-center p-2  text-gray-700 hover:bg-blue-100 rounded">Logout</a>
+         <a href="{% url 'feed:new_post' %}"class="lg:flex justify-center   p-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
+        <a href="{% url 'profiles:profile'%}" class="lg:flex justify-center   p-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
         {#TODO:create button for viewing other profiles so people can follow#}
-         <a href="{% url 'profiles:profile'%}" class="flex justify-center p-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
+         <a href="{% url 'profiles:profile'%}" class="lg:flex justify-center p-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
         {% else%}
-        <a href="{% url 'account_login' %}"class="flex justify-center p-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
+        <a href="{% url 'account_login' %}"class="lg:flex justify-center  p-2text-gray-700 hover:bg-blue-100 rounded">Login</a>
         {% endif%}
       </nav>
     </aside>
@@ -47,8 +49,8 @@
     <div class="post-container">
 
     {% for post in posts%}
-      <!--post container-->    
-      <div class="mb-5 rounded shadow-lg overflow-hidden" >
+      <!--post component container-->    
+      <div class="mb-5  rounded shadow-lg overflow-hidden" >
           <!-- component-->
           <div class="p-5">
               <!--adding user image-->  
