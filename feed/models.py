@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     text=models.CharField(max_length=240,blank=False,null=False)
+    description=models.CharField(max_length=240,blank=False,null=False)
     date=models.DateTimeField(auto_now=True,blank=False)
     author=models.ForeignKey(
         User,
