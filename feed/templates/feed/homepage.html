@@ -14,13 +14,20 @@
     }  
 </style>
 <!-- sidebar for the homapage-->
+<div class="flex">
+  <div class="text-white text-xs ps-2">feed</div>
+    <div class="relative flex size-2">
+      <div class="absolute flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></div>
+       <div class="absolute flex size-2 rounded-full bg-sky-500"></div>
+  </div>
+</div>
 
-
+    
     {% for post in posts%}
       <!--post component container-->   
       <div class="post-container">  
 
-        <div class="mb-5 rounded shadow-lg overflow-hidden" >
+        <div class="my-8 p-2 border-b border-gray-600  shadow-sm overflow-hidden" >
           <!-- component-->
           <div class="">
               <!--adding user image-->  
@@ -35,23 +42,23 @@
               </span>
               </div>  
             
-          <span class="text-sm text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
+          <span class="text-xs text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
               <div class="flex">
-                <p class="font-bold truncate text-gray-800 mt-2" id="author-text-box">{{post.text}}</p>
+                <p class="font-bold truncate text-gray-600 " id="author-text-box">{{post.text}}</p>
               </div>
             
           
           <p class="text-gray-600 mt-2 text-sm">
-            HTML tag to include a column in the Post class(model)
+            Description defined in feed models.py by the 'description' variable. Include this context in the template file.
           </p>
           <!--If statement for read_more_link-->
           
-              <div class="pt-2">
+              <div class="">
                   <a href="{%url 'feed:post_details' post.pk %}" class="text-sm text-blue-600 font-medium ">
                       Read more
                   </a>
               </div>
-          <div class="mt-4 ">
+          <div class="mb-2 ">
               <div class="text-sm text-gray-500">{{post.date| date:"j F , Y g:i a"}}</div>
           </div>
           </div>
