@@ -21,11 +21,11 @@
   </style>
   
 
-    <div class="mx-auto bg-primary-subtle">
+   
     <!--post container-->    
-    <div class="rounded shadow-lg overflow-hidden" >
+    <div class="rounded m-2 shadow-md overflow-hidden" >
         <!-- component-->
-        <div class=" p-2" id="post-detail-component">
+        <div class=" py-5 px-5" id="post-detail-component">
             <!--adding user image-->  
             <div class="flex">
                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
@@ -64,6 +64,6 @@
         </div>
         </div>
     </div>
-    </div>
+   
 
 {%endblock %}
