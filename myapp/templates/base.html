@@ -18,11 +18,12 @@
 
  
  {#TODO: Edit the front end#}
-<body class="m-2">
+<body class="">
   <style>
     
     body{
      border:0px solid red;
+   
        
    }
     #author-text-box{
@@ -41,17 +42,16 @@
              SOCIAL APP
         </a>   
       </div>
-      <nav class="p-4 space-y-2 ">
-        
-        <a href="/" class="block p-2 text-gray-700 hover:bg-blue-100 rounded">Home</a>
+      <nav class=" flex  space-x-2 justify-center">
+        <a href="/" class="border block py-2 text-gray-700 hover:bg-blue-100 rounded">Home</a>
         {% if request.user.is_authenticated %}
-        <a href="{% url 'account_logout' %}" class="block p-2 text-gray-700 hover:bg-blue-100 rounded">Logout</a>
-         <a href="{% url 'feed:new_post' %}"class="block  p-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
-        <a href="{% url 'profiles:profile'%}" class="block p-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
+        <a href="{% url 'account_logout' %}" class="border block py-2 text  text-gray-700 hover:bg-blue-100 rounded">Logout</a>
+         <a href="{% url 'feed:new_post' %}"class="border block  py-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
+        <a href="{% url 'profiles:profile'%}" class="border block py-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
         {#TODO:create button for viewing other profiles so people can follow#}
-         <a href="{% url 'profiles:profile'%}" class="block p-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
+         <a href="{% url 'profiles:profile'%}" class="border block py-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
         {% else%}
-        <a href="{% url 'account_login' %}"class="block p-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
+        <a href="{% url 'account_login' %}"class="border block py-2 text-gray-700 hover:bg-blue-100 rounded">Login</a>
         {% endif%}
       </nav>
     </aside>
@@ -62,7 +62,7 @@
        
 {% if request.user.is_authenticated%}
   <!--modal component-->     
-  <div class="js-modal hidden " >
+  <div class="js-modal hidden" >
     <!-- Modal Background -->
     <div
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
