@@ -4,25 +4,30 @@
 {% block body%}
   <style>
 
-       #sidebar-original{
+    body{
+        display: flex;
+        
+    }
+    #sidebar-original{
         visibility: collapse;
+        
     }
     #author-text-box{
        width: 36rem;
        overflow-wrap: break-word;
        
     }
-
+  
   </style>
   
 
-    <div class="bg-primary-subtle">
+    <div class="mx-auto bg-primary-subtle">
     <!--post container-->    
-    <div class="mb-5 rounded shadow-lg overflow-hidden" >
+    <div class="rounded shadow-lg overflow-hidden" >
         <!-- component-->
-        <div class="p-5">
+        <div class=" p-2" id="post-detail-component">
             <!--adding user image-->  
-            <div class="">
+            <div class="flex">
                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
                 <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
             {% endthumbnail %}
