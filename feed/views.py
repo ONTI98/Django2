@@ -71,3 +71,21 @@ class CreateNewPostView(LoginRequiredMixin,CreateView):
            content_type="application/html"
            )
 
+
+class DiscoverView(TemplateView):
+
+    model=Post
+    template_name="feed/discover.html"
+    
+
+    def dispatch(self,request,*args,**kwargs):
+        self.request=request
+        return super().dispatch(request,*args,**kwargs)
+
+    def get_context_data(self, **kwargs):
+            context=super().get_context_data(**kwargs)
+            if self.request.user.is_authenticated:
+                context['posts']=Post.objects.all()
+                return context
+           
+            return context
