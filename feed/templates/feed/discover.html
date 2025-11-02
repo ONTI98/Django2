@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load sorl_thumbnail%}
+
+
+
+{%block body%}
+
+
+{%for post in posts%}
+    {% for post in posts%}
+      <!--post component container-->   
+      <div class="post-container">  
+
+        <div class="my-8 p-2 border-b border-gray-600  shadow-sm overflow-hidden" >
+          <!-- component-->
+          <div class="">
+              <!--adding user image-->  
+              <div class="flex">
+                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
+                  <img src="{{im.url}}"width={{im.width}} height={{im.height}} class="rounded-full w-10 h-10">
+              {% endthumbnail %}
+              <span class="pt-2 ml-2 text-sm text-gray-700 ">
+                  <a href="{% url 'profiles:profile_details' post.author.username %}">
+                    {{post.author.username}}
+                  </a>
+              </span>
+              </div>  
+            
+          <span class="text-xs text-blue-600 font-medium uppercase">WHAT'S HAPPENING?</span>
+              <div class="flex">
+                <p class="font-bold truncate text-gray-600 " id="author-text-box">{{post.text}}</p>
+              </div>
+            
+          
+          <p class="text-gray-600 mt-2 text-sm">
+            Description defined in feed models.py by the 'description' variable. Include this context in the template file.
+          </p>
+          <!--If statement for read_more_link-->
+          
+              <div class="">
+                  <a href="{%url 'feed:post_details' post.pk %}" class="text-sm text-blue-600 font-medium ">
+                      Read more
+                  </a>
+              </div>
+          <div class="mb-2 ">
+              <div class="text-sm text-gray-500">{{post.date| date:"j F , Y g:i a"}}</div>
+          </div>
+          </div>
+      </div>
+    {% endfor%} 
+{%endfor%}
+
+
+{% endblock%}
