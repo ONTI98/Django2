@@ -16,10 +16,10 @@
 <!-- sidebar for the homapage-->
     {%if request.user.is_authenticated %}
         <div class="flex">
-          <div class="text-white text-xs ps-2">feed</div>
-            <div class="relative flex size-2">
-              <div class="absolute flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></div>
-              <div class="absolute flex size-2 rounded-full bg-sky-500"></div>
+          <div class="dark:text-white  text-gray-600 text-xs ps-2 pt-2">feed</div>
+            <div class="relative flex pt-2 size-2">
+              <div class="absolute flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></div>
+              <div class="absolute flex size-2 rounded-full bg-green-500"></div>
           </div>
         </div>
         {%endif%}
