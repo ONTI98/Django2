@@ -2,6 +2,10 @@ from django import forms
 from django.contrib.auth.models import  User
 from .models import Profile
 from django.views.generic import DetailView
+from allauth.account.forms import LoginForm
+
+from allauth.account.fields import EmailField, PasswordField
+
 
 
 
@@ -26,9 +30,10 @@ class UpdateUserDetails(forms.ModelForm):
 #update profile photo
 class UpdateProfilePhoto(forms.ModelForm):
 
-     image=forms.ImageField(label="Pofile photo",widget=forms.FileInput(attrs={'class':'form-control'}))
+     image=forms.ImageField(label="Profile photo",widget=forms.FileInput(attrs={'class':'form-control'}))
 
      class Meta:
           model=Profile
           fields=['image']
+
 
