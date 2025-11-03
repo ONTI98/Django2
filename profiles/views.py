@@ -18,6 +18,8 @@ from .forms import UpdateProfilePhoto
 from .forms import UpdateUserDetails
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate,login
+
 # Create your views here.
 
 
@@ -127,17 +129,22 @@ def update_profile_information(request):
                profile_form.save()
                messages.success(request,("Profile updated successfully!"))
 
-               return redirect("/")
+               return render(request,"profile.html")
 #redireect to user profile
               
      else:
           user_form=UpdateUserDetails(instance=request.user)
-          profile_form=UpdateProfilePhoto(instance=request.user)
-
+          profile_form=UpdateProfilePhoto(instance=request.user.profile)
+     
 
      return render(request,"profile_update.html",{'user_form':user_form, 'profile_form':profile_form})
 
 
+
+      
 class ChangePasswordView(PasswordChangeView):
-    template_name = 'change_password.html'
-    success_url = reverse_lazy("password")
+    
+    template_name="account/password_change.html"
+
+
+
