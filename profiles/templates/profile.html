@@ -1,54 +1,36 @@
-{% extends 'base.html'%}
-{% load static%}
-{%load sorl_thumbnail %}
-{%block head%}<title>Profile</title>{%endblock%}
-{%block body%}
+{% extends 'base.html'%} {% load static%} {%load sorl_thumbnail %} 
+{%block head%}
+<title>Profile</title>
+{%endblock%} 
 
-<body class=" bg-gray-100 min-h-screen py-10">
-  
-     <div class="mb-5">
-      {% thumbnail user.profile.image "100x100" crop="center" as im %}
-        <img src="{{ im.url }}" 
-        width="{{ im.width }}" 
-        height="{{ im.height }}"
-        class="rounded-full w-20 h-20" />  
-      {% endthumbnail %}
+
+
+{%block body%}
+    <div class="flex  flex-col border rounded">
+         <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+    <div class="flex justify-center">
+        {% thumbnail user.profile.image "100x100" crop="center" as im %}
+            <img
+            src="{{ im.url }}"
+            width="{{ im.width }}"
+            height="{{ im.height }}"
+            class="rounded-full w-50 h-50"
+            />
+        {% endthumbnail %}
     </div>
- 
-    {% if user_form.errors %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div id="form_errors">
-                {% for key, value in user_form.errors.items %}
-                    <strong>{{ value }}</strong>
-                {% endfor %}
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+    <div class="flex justify-center text-sm text-gray-600 ">Username</div>
+    <div class="flex justify-center text-xl ">{{user.username}}</div>
+    <div class="flex gap-x-2 lg:flex-row lg:justify-center ">
+        <div class="">
+            <button type="button" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <a href="{% url 'profiles:update_user_details'%}">Update Profile</a>
             </button>
         </div>
-    {% endif %}
-    <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="small mb-1">Username:</label>
-                            {{ user.username }} <br>
-                        <label class="small mb-1">Email:</label>
-                            {{ user.email }}
-                    </div>
-                </div>
+            <div class=" ">
+                <button type="button" class=" mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    <a href="{% url 'profiles:password' %}">Change Password</a>
+                </button>
             </div>
-            <br><br>
-            <a href="{% url 'profiles:update_user_details'%}">
-              <button type="button" class="btn btn-dark border rounded p-2 btn-lg">Update Profile</button>
-            </a>
-            <span>  <button type="button" class="btn btn-dark border rounded p-2 btn-lg">
-                        <a href="{% url 'profiles:password' %}">Change Password</a>
-                      </button></span>
-            
-        </form>
     </div>
-
+    </div>
 {%endblock%}
