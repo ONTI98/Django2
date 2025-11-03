@@ -35,10 +35,13 @@
     <aside class=" shadow-sm"  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600  lg:shadow-lg">
         <a href="/">
-             SOCIAL APP
+             SOCIAL APP<br>
+             <div class="text-xs mb-">
+               Built by Ontisitse Manyeneng
+             </div>
         </a>   
       </div>
-      <nav class="  flex space-x-2 justify-center">
+      <nav class="  flex space-x-2 justify-center" id="navigation-bar">
         <a href="/" class=" block py-2 dark:text-white text-sm lg:text-base text-gray-700 hover:bg-blue-100 rounded" id="home-link">Home</a>
         {% if request.user.is_authenticated %}
         <a href="{% url 'account_logout' %}" class=" block dark:text-white text-sm lg:text-base   py-2 text-gray-700 hover:bg-blue-100 rounded">Logout</a>
