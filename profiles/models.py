@@ -3,20 +3,23 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from sorl.thumbnail import ImageField
+from PIL import Image
 
 
 # Create your models here.
 class Profile(models.Model):
+     
     user=models.OneToOneField(User,
                               on_delete=models.CASCADE,
                               related_name="profile"
                             )
     image=ImageField(upload_to="profiles")
     followers=models.ManyToManyField(User,related_name="followers",blank=True)
-  
+    
     def __str__(self):
          return self.user.username
-    
+    #should return string object (use string method)
+
 #everytime a user is saved,create a new  profile
 @receiver(post_save,sender=User)
 def create_user_profile(sender,instance,created,**kwargs):
