@@ -44,6 +44,7 @@
         </a>   
       </div>
       <nav class=" lg:block lg:m-5 flex space-x-2 justify-center" id="navigation-bar">
+        <a href="/" class=" block p-2 hover:bg-blue-300 dark:text-white text-sm lg:text-base  text-gray-700  hidden dark:hover:bg-blue-500 rounded" id="home-link">Home</a>
         <a href="/" class=" block p-2 hover:bg-blue-300 dark:text-white text-sm lg:text-base  text-gray-700  dark:hover:bg-blue-500 rounded" id="home-link">Home</a>
         {% if request.user.is_authenticated %}
         <a href="{% url 'account_logout' %}" class=" block dark:text-white text-sm lg:text-base   p-2 hover:bg-blue-300 text-gray-700  dark:hover:bg-blue-500 rounded">Logout</a>
