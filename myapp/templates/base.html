@@ -32,25 +32,27 @@
 
  
     {#TODO: add a link for the user bio and detail view#}
-    <aside class=" shadow-sm"  id="sidebar-original">
+    <aside class=" dark:bg-black bg-gray-400 rounded-b-md shadow-lg"  id="sidebar-original">
       <div class="p-4 text-xl font-semibold text-blue-600  lg:shadow-lg">
         <a href="/">
-             SOCIAL APP<br>
-             <div class="text-xs mb-">
-               Built by Ontisitse Manyeneng
+             <div class="dark:text-sky-500">
+              CODONTI
+             </div> 
+             <div class="dark:text-sky-500 text-xs mb-">
+              Social
              </div>
         </a>   
       </div>
       <nav class="  flex space-x-2 justify-center" id="navigation-bar">
-        <a href="/" class=" block py-2 dark:text-white text-sm lg:text-base text-gray-700 hover:bg-blue-100 rounded" id="home-link">Home</a>
+        <a href="/" class=" block p-2 hover:bg-blue-300 dark:text-white text-sm lg:text-base  text-gray-700  dark:hover:bg-blue-500 rounded" id="home-link">Home</a>
         {% if request.user.is_authenticated %}
-        <a href="{% url 'account_logout' %}" class=" block dark:text-white text-sm lg:text-base   py-2 text-gray-700 hover:bg-blue-100 rounded">Logout</a>
-         <a href="{% url 'feed:new_post' %}"class=" block dark:text-white text-sm lg:text-base   py-2 text-gray-700  hover:bg-blue-100 rounded js-modal-toggle ">New post</a>
-        <a href="{% url 'profiles:profile'%}" class=" block dark:text-white text-sm lg:text-base  py-2 text-gray-700 transform hover:bg-blue-100 rounded">Account</a>
+        <a href="{% url 'account_logout' %}" class=" block dark:text-white text-sm lg:text-base   p-2 hover:bg-blue-300 text-gray-700  dark:hover:bg-blue-500 rounded">Logout</a>
+         <a href="{% url 'feed:new_post' %}"class=" block dark:text-white text-sm lg:text-base   p-2 hover:bg-blue-300 text-gray-700   dark:hover:bg-blue-500 rounded js-modal-toggle ">New post</a>
+        <a href="{% url 'profiles:profile'%}" class=" block dark:text-white text-sm lg:text-base  p-2 hover:bg-blue-300 text-gray-700 transform  dark:hover:bg-blue-500 rounded">Account</a>
         {#TODO:create button for viewing other profiles so people can follow#}
-         <a href="{% url 'feed:discover'%}" class=" block dark:text-white text-sm lg:text-base  py-2 text-gray-700 transform hover:bg-blue-100 rounded">Discover</a>
+         <a href="{% url 'feed:discover'%}" class=" block dark:text-white text-sm lg:text-base  p-2 hover:bg-blue-300 text-gray-700 transform  dark:hover:bg-blue-500 rounded">Discover</a>
         {% else%}
-        <a href="{% url 'account_login' %}" class=" block dark:text-white text-sm lg:text-base  py-2 text-gray-700 hover:bg-blue-100 rounded" id="login-link">Login</a>
+        <a href="{% url 'account_login' %}" class=" block dark:text-white text-sm lg:text-base  p-2 hover:bg-blue-300 text-gray-700  dark:hover:bg-blue-500 rounded" id="login-link">Login</a>
         {% endif%}
       </nav>
     </aside>
