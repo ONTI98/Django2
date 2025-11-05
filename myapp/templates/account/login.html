@@ -7,16 +7,26 @@
 {% endblock head_title %}
 
 {% block body %}
+<style>
+  input{
+    margin-top: 0.25rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: aquamarine;
+  }
+</style>
 
-
-<div class="flex min-h-screen items-center justify-center bg-gray-50">
+<div class="flex  items-center justify-center  mt-16">
   <div class="w-full max-w-md bg-white border border-gray-200 rounded-xl shadow-md p-8">
     {% block content %}
 
       <!-- Header -->
-      {% element h1 class="text-2xl font-semibold text-center text-blue-600 mb-6" %}
-        {% trans "Sign In" %}
-      {% endelement %}
+ 
+              <div class="text-lg font-bold text-blue-600">
+                Sign in 
+              </div>
+              
+    
 
       {% if not SOCIALACCOUNT_ONLY %}
         <!-- Sign Up Prompt -->
@@ -43,9 +53,9 @@
         
 
           {% slot actions %}
-            {% element button type="submit" tags="prominent,login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-md transition-colors" %}
-              {% trans "Sign In" %}
-            {% endelement %}
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-md transition-colors">
+              Sign in
+          </button>
           {% endslot %}
         {% endelement %}
       {% endif %}
