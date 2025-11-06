@@ -23,9 +23,9 @@
 
    
     <!--post container-->    
-    <div class="rounded m-2 shadow-md overflow-hidden" >
+    <div class="rounded m-2 lg:m-auto shadow-md overflow-hidden" >
         <!-- component-->
-        <div class=" py-5 px-5" id="post-detail-component">
+        <div class=" py-5 px-2" id="post-detail-component">
             <!--adding user image-->  
             <div class="flex">
                  {% thumbnail  post.author.profile.image "200x200" crop="center" as im %}
@@ -45,9 +45,9 @@
         </div>
           
     
-        <p class="text-gray-600 mt-2 text-sm">
-          HTML tag to include a column in the Post class(model)
-        </p>
+       <p class="text-gray-600 mt-2 text-sm">
+            Description defined in feed models.py by the 'description' variable. Include this context in the template file.
+          </p>
         <!--If statement for read_more_link-->
         {% if read_more_link == True%}
             <div class="pt-2">
