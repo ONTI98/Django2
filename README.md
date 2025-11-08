@@ -16,7 +16,7 @@
 <h2>Responsive design</h2>
 <div align="center">
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1023.jpg?raw=true" 
-    padding="40" >
+    style="width:500px;">
 </div>
 <div>
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1025.jpg?raw=true"
