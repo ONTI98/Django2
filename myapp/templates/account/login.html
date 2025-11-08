@@ -8,6 +8,15 @@
 
 {% block body %}
 <style>
+ 
+  @media(min-width:1025px){
+    #sidebar-original{
+      visibility: collapse;
+      
+    }
+ 
+  }
+  
   input{
     margin-top: 0.25rem;
     border: 1px solid oklch(70.7% 0.022 261.325);
@@ -16,8 +25,8 @@
   }
 </style>
 
-<div class="flex  items-center justify-center  mt-16">
-  <div class="w-full max-w-md bg-white border border-gray-200 rounded-xl shadow-md p-8">
+
+  <div class="lg:w-full mx-2 lg:mx-64 lg:mt-36 bg-white border border-gray-200  rounded-lg  p-8">
     {% block content %}
 
       <!-- Header -->
