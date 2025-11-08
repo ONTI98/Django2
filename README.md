@@ -1,5 +1,5 @@
 <h1>Introduction</h1>
-<p><strong>Codonti Social</stromg> is a Django-based,fully responsive social media template that is based on information-sharing for educational purposes. its purpose is to serve as a template for making Django-based social media application open to developer-specific modifications.</p>
+<p><strong>Codonti Social</stromg> is a Django-based,fully responsive social media template that is based on information-sharing for educational purposes. its purpose is to serve as a template for making Django-based social media applications open to developer-specific modifications.</p>
 
 <h1>Overview</h1><br>
 <p>The main app is built is created using Python's Django framework.The following are all the technologies used:<br>
