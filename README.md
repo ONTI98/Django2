@@ -14,9 +14,9 @@
 </p>
 <h1>Light Mode Mobile device</h1>
 <h2>Responsive design</h2>
-<div style="margin:50px;">
+<div>
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1023.jpg?raw=true" 
-    style="width:500px;">
+    style="width:500px; padding-left:150px;">
 </div>
 <div>
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1025.jpg?raw=true"
