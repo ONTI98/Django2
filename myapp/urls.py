@@ -11,7 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(feed_urls,namespace="feed")),
     path('',include("allauth.urls")),
-    path('',include(profile_urls,namespace="profiles")),
+    path('',include(profile_urls,namespace="profiles"))
 
     ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
