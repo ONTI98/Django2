@@ -9,10 +9,12 @@
         #navigation-bar{
             visibility: collapse;
         }
-      
+        #sidebar-original{
+            visibility: collapse;
+        }
     </style>
 
-    <div class="flex flex-col m-2 p-2 dark:bg-black rounded shadow">
+    <div class="flex lg:mx-auto lg:p-5 flex-col m-2 p-2 dark:bg-black rounded shadow">
          <h2 class="text-2xl font-semibold mb-4">Profile</h2>
     <div class="flex justify-center">
         {% thumbnail user.profile.image "100x100" crop="center" as im %}
