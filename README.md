@@ -18,7 +18,7 @@
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1023.jpg?raw=true" 
     style="width:500px;">
 </div>
-<div>
+<div align="center">
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1025.jpg?raw=true"
-    style="">
+    style="height:600px">
 </div>
