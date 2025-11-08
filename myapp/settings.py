@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'tailwind',
-    'theme',
     'profiles',
     'sorl.thumbnail',
     'followers',
