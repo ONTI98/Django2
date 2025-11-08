@@ -7,13 +7,12 @@
 
 {% block content %}
 <style>
-    .sidebar{
-        visibility:hidden;
-        display: flex;
-        border:1px solid green;
-        
+   
+    #sidebar-original{
+        visibility: collapse;
     }
 </style>
+<div class="border rounded-lg p-5">
 {% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
@@ -51,5 +50,7 @@
     {% endif %}
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+    {% endif %}    
+</div>
+
 {% endblock content %}
