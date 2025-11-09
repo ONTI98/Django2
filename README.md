@@ -115,3 +115,21 @@
             └── wsgi.py
 
 </code>
+<h1>Running app for dvelopment</h1>
+<p>To run the app You will need to do the following</p>
+<h3>Clone the respository</h3>
+<code>git clone https://github.com/ONTI98/Django2.git</code>
+<p>In the terminal, create a virtual environment</p>
+<code>python -m venv .venv</code>
+<h3>Set execution policy to 'Remotesigned' in your terminal (ONLY IF YOU DO NOT HAVE ADMIN ACCESS)<h3>
+<code> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process</code>
+<h3>Activate the virtual environment scripts</h3>
+<p>VS Code</p>
+<code>./.venv/Scripts/activate</code>
+<p>OR</p>
+<code>cd .venv</code>
+<code>cd Scripts</code>
+<code>activate</code>
+<h2>HEADS-UP: You might neeed to do some migrations and debugging<h2>
+<h1>HAVE A BLAST</H1>
+
