@@ -127,9 +127,9 @@
 <p>VS Code</p>
 <code>./.venv/Scripts/activate</code>
 <p>OR</p>
-<code>cd .venv</code>
-<code>cd Scripts</code>
-<code>activate</code>
+<code>cd .venv</code><br>
+<code>cd Scripts</code><br>
+<code>activate</code><
 <h2>HEADS-UP: You might neeed to do some migrations and debugging<h2>
 <h1>HAVE A BLAST</H1>
 
