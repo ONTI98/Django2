@@ -129,7 +129,7 @@
 <p>OR</p>
 <code>cd .venv</code><br>
 <code>cd Scripts</code><br>
-<code>activate</code><
+<code>activate</code>
 <h2>HEADS-UP: You might neeed to do some migrations and debugging<h2>
 <h1>HAVE A BLAST</H1>
 
