@@ -115,7 +115,7 @@
             └── wsgi.py
 
 </code>
-<h1>Running app for dvelopment</h1>
+<h1>Running app for development</h1>
 <p>To run the app You will need to do the following</p>
 <h3>Clone the respository</h3>
 <code>git clone https://github.com/ONTI98/Django2.git</code>
