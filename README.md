@@ -12,7 +12,7 @@
     <li>Tailwind CSS</li>
 </ul>
 </p>
-<h1>Light Mode Mobile and large devices </h1>
+<h1>Light mode mobile and large devices </h1>
 <h2>Responsive design</h2>
 <div align="center">
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1023.jpg?raw=true" 
@@ -22,3 +22,96 @@
     <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1025.jpg?raw=true"
     style="">
 </div>
+
+<h1>Dark mode mobile and large devices </h1>
+<div align="center">
+    <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1022.jpg?raw=true" 
+    style="width:500px;">
+</div>
+<div align="center">
+    <img src="https://github.com/ONTI98/Django2/blob/main/fullstack1024.jpg?raw=true"
+    style="">
+</div>
+
+<h1>Features</h1>
+<ul>
+    <li>Follow unfollow button</li>
+    <li>Posts</li>
+    <li>Dicsover:Shows posts from users that have an account, that you may not be following upon opening an account)</li>
+    <li>Account</li>
+    <li>Django sign up an sign in forms</li>
+</ul>
+
+<h3>Features that can be added on</h2>
+<ul>
+    <li>Like button</li>
+    <li>Comments</li>
+    <li>Reposting</li>
+    <li>Custom-styled forms</li>
+</ul>
+
+<h1>Application structure</h1>
+<code>
+    Directory structure:
+    └── onti98-django2/
+        ├── README.md
+        ├── manage.py
+        ├── requirements.txt
+        ├── feed/
+        │   ├── __init__.py
+        │   ├── admin.py
+        │   ├── apps.py
+        │   ├── models.py
+        │   ├── tests.py
+        │   ├── urls.py
+        │   ├── views.py
+        │   ├── migrations/
+        │   │   ├── 0001_initial.py
+        │   │   └── __init__.py
+        │   └── templates/
+        │       └── feed/
+        │           ├── create.html
+        │           ├── detail.html
+        │           ├── discover.html
+        │           └── homepage.html
+        ├── followers/
+        │   ├── admin.py
+        │   ├── models.py
+        │   └── views.py
+        ├── frontend/
+        │   └── js/
+        │       └── main.js
+        ├── myapp/
+        │   ├── settings.py
+        │   ├── urls.py
+        │   └── templates/
+        │       ├── base.html
+        │       ├── account/
+        │       │   ├── base.html
+        │       │   ├── login.html
+        │       │   ├── password_change.html
+        │       │   ├── password_reset.html
+        │       │   └── signup.html
+        │       └── includes/
+        │           └── post.html
+        ├── profiles/
+        │   ├── admin.py
+        │   ├── forms.py
+        │   ├── models.py
+        │   ├── urls.py
+        │   ├── views.py
+        │   └── templates/
+        │       ├── profile.html
+        │       ├── profile_details.html
+        │       ├── profile_update.html
+        │       └── update_profile.html
+        ├── templates/
+        │   └── homepage.html
+        └── til/
+            ├── __init__.py
+            ├── asgi.py
+            ├── settings.py
+            ├── urls.py
+            └── wsgi.py
+
+</code>
