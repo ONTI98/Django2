@@ -130,6 +130,8 @@
 <code>cd .venv</code><br>
 <code>cd Scripts</code><br>
 <code>activate</code>
+<h3>Install requirements</h3>
+<code>pip install -r requiremenets.txt</code>
 <h2>HEADS-UP: You might neeed to do some migrations and debugging<h2>
 <h1>HAVE A BLAST</H1>
 
